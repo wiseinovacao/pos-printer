@@ -1,0 +1,22 @@
+{
+	"name": "pos-printer",
+	"description": "A simple library to print on POS printers using Electron",
+	"version": "1.0.0",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"demo": "electron ./demo/",
+		"start": "npm run build && npm run demo",
+		"build": "tsc"
+	},
+	"keywords": ["electron", "pos", "printer"],
+	"author": {
+		"name": "Bruno Silva"
+	},
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^22.5.1",
+		"electron": "^32.0.1",
+		"typescript": "^5.5.4"
+	}
+}
