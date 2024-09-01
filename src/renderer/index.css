@@ -1,0 +1,9 @@
+@page {
+    margin: 0;
+    page-break-before: always;
+}
+body {
+    font-size: 12px; 
+}
+ .font {font-size: 12px; margin: 0 15px;}
+ 

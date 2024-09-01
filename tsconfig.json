@@ -1,15 +1,22 @@
 {
+	"compileOnSave": false,
 	"compilerOptions": {
 		"target": "ESNext",
-		"module": "commonjs",
-		"esModuleInterop": true,
-		"declaration": true,
-		"outDir": "./dist",
-		"rootDir": "./src",
-		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "node",
+		"pretty": true,
+		"newLine": "LF",
+		"noImplicitAny": false,
+		"allowSyntheticDefaultImports": true,
 		"strict": true,
-		"skipLibCheck": true
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"sourceMap": true,
+		"skipLibCheck": true,
+		"allowJs": true,
+		"jsx": "preserve",
+		"baseUrl": "./",
+		"outDir": "./dist"
 	},
-	"include": ["src/**/*"],
-	"exclude": ["node_modules"]
+	"include": ["src/main/**/*", "src/renderer/**/*"],
+	"exclude": ["./node_modules"]
 }

@@ -1,12 +1,10 @@
-export declare type PosPrintType = "text";
-
-export interface PosPrintData {
-	type: PosPrintType;
-	value?: string;
-	style?: PrintDataStyle;
-}
-
-export declare type PosPrintPosition = "left" | "center" | "right";
+export declare type PageSize =
+	| "A3"
+	| "A4"
+	| "A5"
+	| "Legal"
+	| "Letter"
+	| "Tabloid";
 
 export declare type PaperSize =
 	| "80mm"
@@ -16,37 +14,58 @@ export declare type PaperSize =
 	| "58mm"
 	| "44mm";
 
-// TODO: Change the line, extend the interface from electron's PrintOptions
+export interface SizeOptions {
+	height: number;
+	width: number;
+}
+
 export interface PosPrintOptions {
+	header?: string;
+	width?: string | number;
+	footer?: string;
+	copies?: number;
+	preview?: boolean;
+	printerName?: string;
+	margin?: string;
+	timeOutPerLine?: number;
 	silent?: boolean;
-	printBackground?: boolean;
-	deviceName?: string;
 	color?: boolean;
+	printBackground?;
+	boolean;
 	margins?: {
 		marginType?: "default" | "none" | "printableArea" | "custom";
 		top?: number;
 		bottom?: number;
-		left?: number;
 		right?: number;
+		left?: number;
 	};
 	landscape?: boolean;
 	scaleFactor?: number;
 	pagesPerSheet?: number;
 	collate?: boolean;
-	copies?: number;
 	pageRanges?: { from: number; to: number }[];
 	duplexMode?: "simplex" | "shortEdge" | "longEdge";
+	pageSize?: PaperSize | SizeOptions;
 	dpi?: { horizontal: number; vertical: number };
-	header?: string;
-	footer?: string;
-	pageSize?: PaperSize;
-
-	width?: string | number;
-	preview?: boolean;
-	margin?: string;
-	timeOutPerLine?: number;
 	pathTemplate?: string;
 }
+
+export interface SizeOptions {
+	height: number;
+	width: number;
+}
+
+export interface PosPrintData {
+	/**
+	 * @property type
+	 * @description type data to print: 'text'
+	 */
+	type: PosPrintType;
+	value?: string;
+	style?: PrintDataStyle;
+}
+
+export declare type PosPrintType = "text";
 
 export interface PrintDataStyle {
 	accentColor?: string;
