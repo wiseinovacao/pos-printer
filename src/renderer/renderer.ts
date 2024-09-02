@@ -1,3 +1,4 @@
+import { PosPrintData } from "src/main";
 import "./index.css";
 import { generatePageText } from "./utils/render-utils";
 
@@ -12,21 +13,18 @@ ipcRender.on("body-init", (event, arg) => {
 	event.sender.send("body-init-reply", { status: true, error: null });
 });
 
-ipcRender.on("render-line", renderDataToHTML);
+ipcRender.on("render-lines", renderDataToHTML);
 
-async function renderDataToHTML(event, arg) {
-	switch (arg.line.type) {
-		case "text":
-			try {
-				body.appendChild(generatePageText(arg.line));
+// TODO: Add support for more types of data (images, tables, etc.)
+async function renderDataToHTML(event, data: PosPrintData[]) {
+	for (const line of data) {
+		switch (line.type) {
+			case "text":
+				body.appendChild(generatePageText(line));
 
-				event.sender.send("render-line-reply", { status: true, error: null });
-			} catch (e) {
-				event.sender.send("render-line-reply", {
-					status: false,
-					error: (e as any).toString(),
-				});
-			}
-			return;
+				break;
+		}
 	}
+
+	event.sender.send("render-lines-reply", { status: true, error: null });
 }

@@ -113,21 +113,17 @@ export class PosPrinter {
 	): Promise<any> {
 		// biome-ignore lint/suspicious/noAsyncPromiseExecutor: <explanation>
 		return new Promise(async (resolve, reject) => {
-			try {
-				for (const [lineIndex, line] of data.entries()) {
-					const result: any = await sendIpcMsg(
-						"render-line",
-						window.webContents,
-						{ line, lineIndex },
-					);
-					if (!result.status) {
-						return reject(result.error);
-					}
-				}
-				resolve({ message: "page-rendered" });
-			} catch (error) {
-				reject(error);
+			const result: any = await sendIpcMsg(
+				"render-lines",
+				window.webContents,
+				data,
+			);
+
+			if (!result.status) {
+				return reject(result.error);
 			}
+
+			resolve({ message: "page-rendered" });
 		});
 	}
 }
