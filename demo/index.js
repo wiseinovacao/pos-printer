@@ -49,6 +49,20 @@ function testPrint() {
 				color: "red",
 			},
 		},
+		{
+			type: "table",
+			style: { border: "1px solid #dadada", width: "100%" },
+			tableHeader: [{ type: "text", value: "User" }],
+			tableBody: [
+				[{ type: "text", value: "Gabriel" }],
+				[{ type: "text", value: "Jones" }],
+				[{ type: "text", value: "David" }],
+			],
+			tableFooter: [{ type: "text", value: "Total: 3" }],
+			tableHeaderStyle: { backgroundColor: "blue", color: "white" },
+			tableBodyStyle: { border: "0.5px solid #dadada" },
+			tableFooterStyle: { backgroundColor: "#000", color: "white" },
+		},
 	];
 
 	try {

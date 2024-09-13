@@ -12,8 +12,12 @@ export function generatePageText(arg: PosPrintData) {
 
 export function applyElementStyles(
 	element: PageElement,
-	style: PrintDataStyle,
+	style?: PrintDataStyle,
 ): PageElement {
+	if (!style) {
+		return element;
+	}
+
 	for (const styleProp of Object.keys(style)) {
 		if (!style[styleProp]) {
 			continue;
@@ -21,4 +25,19 @@ export function applyElementStyles(
 		element.style[styleProp] = style[styleProp];
 	}
 	return element;
+}
+
+export function generateTableCell(arg, type = "td"): HTMLElement {
+	const text = arg.value;
+
+	let cellElement: HTMLElement;
+
+	cellElement = document.createElement(type);
+	cellElement.innerHTML = text;
+	cellElement = applyElementStyles(cellElement, {
+		padding: "8px 4px",
+		...arg.style,
+	});
+
+	return cellElement;
 }

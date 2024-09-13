@@ -1,7 +1,7 @@
 {
 	"name": "pos-printer",
 	"description": "A simple library to print on POS printers using Electron",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
@@ -10,7 +10,11 @@
 		"clean": "shx rm -rf dist",
 		"build": "npm run clean && webpack"
 	},
-	"keywords": ["electron", "pos", "printer"],
+	"keywords": [
+		"electron",
+		"pos",
+		"printer"
+	],
 	"author": {
 		"name": "Bruno Silva"
 	},

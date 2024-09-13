@@ -63,9 +63,23 @@ export interface PosPrintData {
 	type: PosPrintType;
 	value?: string;
 	style?: PrintDataStyle;
+	tableHeader?: PosPrintTableField[] | string[];
+	tableBody?: PosPrintTableField[][] | string[][];
+	tableFooter?: PosPrintTableField[] | string[];
+	tableHeaderStyle?: PrintDataStyle;
+	tableBodyStyle?: PrintDataStyle;
+	tableFooterStyle?: PrintDataStyle;
 }
 
-export declare type PosPrintType = "text";
+export interface PosPrintTableField {
+	type: "text";
+	value?: string;
+	path?: string;
+
+	style?: PrintDataStyle;
+}
+
+export declare type PosPrintType = "text" | "table";
 
 export interface PrintDataStyle {
 	accentColor?: string;
